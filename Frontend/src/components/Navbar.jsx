@@ -52,7 +52,7 @@ const Navbar = () => {
                 </div>
               </div>
             </div>
-            : <button onClick={() => navigate('/login')} className='bg-primary text-white px-8 py-3 rounded-full font-light hidden md:block'>Create account</button>
+            : <button onClick={() => navigate('/login')} className='bg-cyan-400 text-gray-700 font-bold px-8 py-3 rounded-full hidden md:block cursor-pointer'>Sign up</button>
         }
         <img onClick={() => setShowMenu(true)} className='w-6 md:hidden' src={assets.menu_icon} alt="" />
 
@@ -64,7 +64,7 @@ const Navbar = () => {
           </div>
           <ul className='flex flex-col items-center gap-2 mt-5 px-5 text-lg font-medium'>
             <NavLink onClick={() => setShowMenu(false)} to='/'><p className='px-4 py-2 rounded full inline-block'>HOME</p></NavLink>
-            <NavLink onClick={() => setShowMenu(false)} to='/doctors' ><p className='px-4 py-2 rounded full inline-block'>ALL DOCTORS</p></NavLink>
+            <NavLink onClick={() => setShowMenu(false)} to='/doctor' ><p className='px-4 py-2 rounded full inline-block'>ALL DOCTORS</p></NavLink>
             <NavLink onClick={() => setShowMenu(false)} to='/about' ><p className='px-4 py-2 rounded full inline-block'>ABOUT</p></NavLink>
             <NavLink onClick={() => setShowMenu(false)} to='/contact' ><p className='px-4 py-2 rounded full inline-block'>CONTACT</p></NavLink>
           </ul>

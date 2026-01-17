@@ -5,7 +5,7 @@
     font-family: Outfit;
 }
 @theme {
-  --color-primary: #5f6FFF;
+  --color-primary: #22D3EE;
 }
 .active hr{
     @apply block

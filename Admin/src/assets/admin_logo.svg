@@ -1,13 +1,44 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="800" height="200" viewBox="0 0 800 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Icon: rounded cross -->
-  <g transform="translate(40,40)">
-    <rect x="50" y="0" width="60" height="120" rx="12" fill="#6366F1"/>
-    <rect x="20" y="30" width="120" height="60" rx="12" fill="#6366F1"/>
-  </g>
+<svg
+  width="320"
+  height="80"
+  viewBox="0 0 320 80"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <!-- Shield -->
+  <defs>
+    <linearGradient id="shieldGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6EE7B7" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+  </defs>
 
-  <!-- Wordmark -->
-  <text x="220" y="115" font-family="Inter, Arial, Helvetica, sans-serif" font-size="72" font-weight="700" letter-spacing="0.5">
-    <tspan fill="#0F1F99">Health</tspan><tspan fill="#0F1F99">Slot</tspan>
+  <path
+    d="M40 10L65 20V42C65 56 52 64 40 70C28 64 15 56 15 42V20L40 10Z"
+    fill="url(#shieldGradient)"
+  />
+
+  <!-- Medical Cross -->
+  <rect x="36" y="26" width="8" height="20" fill="white"/>
+  <rect x="30" y="32" width="20" height="8" fill="white"/>
+
+  <!-- Orbit swoosh -->
+  <path
+    d="M12 48C24 60 56 60 72 44"
+    stroke="#6EE7B7"
+    stroke-width="4"
+    stroke-linecap="round"
+  />
+
+  <!-- Brand Text -->
+  <text
+    x="95"
+    y="50"
+    font-size="36"
+    font-family="Inter, Arial, sans-serif"
+    font-weight="600"
+  >
+    <tspan fill="#2563EB">Medi</tspan>
+    <tspan fill="#22C55E">Select</tspan>
   </text>
 </svg>
