@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken"
 // admin authentication middleware
 const authAdmin = async (req, res, next) => {
     try {
-        const { atoken } = req.headers  // if you are logged in as admin then one token must be present into header
+        const { atoken } = req.headers.atoken  // if you are logged in as admin then one token must be present into header
         if (!atoken) {
             return res.json({ success: false, message: 'Not Authorized Login Again' })
         }
