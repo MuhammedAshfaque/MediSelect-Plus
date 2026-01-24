@@ -13,11 +13,8 @@ return (
     {/* Section Header */}
     <div className="text-center mb-16">
       <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
-        Meet Our Top Doctors
+        Top Doctors
       </h1>
-      <p className="mt-4 text-gray-500 max-w-xl mx-auto text-sm">
-        Hand-picked specialists trusted by thousands of patients.
-      </p>
     </div>
 
     {/* Doctor Cards */}
