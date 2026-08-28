@@ -19,7 +19,7 @@ app.use(cors({
   origin: [
     "http://localhost:5174",
     "http://localhost:5173",
-    "https://medi-select-frontend.onrender.com",
+    "https://medi-select-plus-frontend.onrender.com/"
     "https://medi-select-admin.onrender.com",
   ],
   credentials: true
