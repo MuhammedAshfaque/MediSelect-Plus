@@ -7,8 +7,7 @@ export const AppContext = createContext()
 const AppContextProvider = (props) => {
 
     const currencySymbol = '₹'
-    // const backendUrl = "https://medi-select-backend.onrender.com"
-    const backendUrl = "http://localhost:4000"
+    const backendUrl = "https://medi-select-plus-backend.onrender.com"
 
     const [doctors, setDoctors] = useState([])
     const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : '')
