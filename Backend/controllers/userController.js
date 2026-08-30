@@ -5,23 +5,18 @@ import userModel from "../models/userModel.js";
 import doctorModel from "../models/doctorModel.js";
 import appointmentModel from "../models/appointmentModel.js";
 import { v2 as cloudinary } from 'cloudinary'
-// import stripe from "stripe";
 import razorpay from 'razorpay';
 
 // Gateway Initialize
-// const stripeInstance = new stripe(process.env.STRIPE_SECRET_KEY)
-
 const razorpayInstance = new razorpay({
     key_id: process.env.RAZORPAY_KEY_ID,
     key_secret: process.env.RAZORPAY_KEY_SECRET,
 })
 
 // API to register user
-const registerUser = async (req, res) => {
-
+const registerUser = async (req, res) => { 
     try {
-        const { name, email, password } = req.body;
-
+        const { name, email, password } = req.body; 
         // checking for all data to register user
         if (!name || !email || !password) {
             return res.json({ success: false, message: 'Missing Details' })
@@ -38,7 +33,7 @@ const registerUser = async (req, res) => {
         }
 
         // hashing user password
-        const salt = await bcrypt.genSalt(10); // the more no. round the more time it will take
+        const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt)
 
         const userData = {
@@ -55,7 +50,8 @@ const registerUser = async (req, res) => {
 
         res.json({ success: true, token })
 
-    } catch (error) {
+    } 
+    catch (error) {
         console.log(error)
         res.json({ success: false, message: error.message })
     }
@@ -63,7 +59,6 @@ const registerUser = async (req, res) => {
 
 // API to login user
 const loginUser = async (req, res) => {
-
     try {
         const { email, password } = req.body;
         const user = await userModel.findOne({ email })
@@ -81,7 +76,8 @@ const loginUser = async (req, res) => {
         else {
             res.json({ success: false, message: "Invalid credentials" })
         }
-    } catch (error) {
+    } 
+    catch (error) {
         console.log(error)
         res.json({ success: false, message: error.message })
     }
@@ -90,7 +86,6 @@ const loginUser = async (req, res) => {
 // API to get user profile data
 const getProfile = async (req, res) => {
     try {
-        // const { userId } = req.body
         const { userId } = req.user
         const userData = await userModel.findById(userId).select('-password')
         res.json({ success: true, userData })
@@ -102,10 +97,8 @@ const getProfile = async (req, res) => {
 }
 
 // API to update user profile
-const updateProfile = async (req, res) => {
-
-    try {
-
+const updateProfile = async (req, res) => { 
+    try { 
         const { name, phone, address, dob, gender } = req.body
         const { userId } = req.user
         const imageFile = req.file
@@ -117,7 +110,6 @@ const updateProfile = async (req, res) => {
         await userModel.findByIdAndUpdate(userId, { name, phone, address: JSON.parse(address), dob, gender })
 
         if (imageFile) {
-
             // upload image to cloudinary
             const imageUpload = await cloudinary.uploader.upload(imageFile.path, { resource_type: "image" })
             const imageURL = imageUpload.secure_url
@@ -127,12 +119,14 @@ const updateProfile = async (req, res) => {
 
         res.json({ success: true, message: 'Profile Updated' })
 
-    } catch (error) {
+    } 
+    catch (error) {
         console.log(error)
         res.json({ success: false, message: error.message })
     }
 }
 
+// revision due
 // API to book appointment 
 const bookAppointment = async (req, res) => {
 
@@ -285,67 +279,6 @@ const verifyRazorpay = async (req, res) => {
         res.json({ success: false, message: error.message })
     }
 }
-
-// API to make payment of appointment using Stripe
-// const paymentStripe = async (req, res) => {
-//     try {
-
-//         const { appointmentId } = req.body
-//         const { origin } = req.headers
-
-//         const appointmentData = await appointmentModel.findById(appointmentId)
-
-//         if (!appointmentData || appointmentData.cancelled) {
-//             return res.json({ success: false, message: 'Appointment Cancelled or not found' })
-//         }
-
-//         const currency = process.env.CURRENCY.toLocaleLowerCase()
-
-//         const line_items = [{
-//             price_data: {
-//                 currency,
-//                 product_data: {
-//                     name: "Appointment Fees"
-//                 },
-//                 unit_amount: appointmentData.amount * 100
-//             },
-//             quantity: 1
-//         }]
-
-//         const session = await stripeInstance.checkout.sessions.create({
-//             success_url: `${origin}/verify?success=true&appointmentId=${appointmentData._id}`,
-//             cancel_url: `${origin}/verify?success=false&appointmentId=${appointmentData._id}`,
-//             line_items: line_items,
-//             mode: 'payment',
-//         })
-
-//         res.json({ success: true, session_url: session.url });
-
-//     } catch (error) {
-//         console.log(error)
-//         res.json({ success: false, message: error.message })
-//     }
-// }
-
-// const verifyStripe = async (req, res) => {
-//     try {
-
-//         const { appointmentId, success } = req.body
-
-//         if (success === "true") {
-//             await appointmentModel.findByIdAndUpdate(appointmentId, { payment: true })
-//             return res.json({ success: true, message: 'Payment Successful' })
-//         }
-
-//         res.json({ success: false, message: 'Payment Failed' })
-
-//     } catch (error) {
-//         console.log(error)
-//         res.json({ success: false, message: error.message })
-//     }
-
-// }
-
 export {
     loginUser,
     registerUser,

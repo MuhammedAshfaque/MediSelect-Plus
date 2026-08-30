@@ -22,21 +22,22 @@ const AppContextProvider = (props) => {
             } else {
                 toast.error(data.message)
             }
-        } catch (error) {
+        } 
+        catch (error) {
             console.log(error)
             toast.error(error.message)
         }
     }
 
     // Getting User Profile using API
-    const loadUserProfileData = async () => {
-
+    const loadUserProfileData = async () => { 
         try {
             const { data } = await axios.get(backendUrl + '/api/user/get-profile', { headers: { token } })
 
             if (data.success) {
                 setUserData(data.userData) // Here userData is the variable which present into response object, sent by the backend(get-profile controller). Dont thnk that it is userData state variable which defined above
-            } else {
+            } 
+            else {
                 toast.error(data.message)
             }
 

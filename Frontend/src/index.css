@@ -6,6 +6,36 @@
 }
 @theme {
   --color-primary: #22D3EE;
+  --animate-pulse-color: pulse-color 3s ease-in-out infinite;
+  --animate-pulse-text: pulse-text 4s ease-in-out infinite;
+  --animate-rgb-text: rgb-text 6s linear infinite;
+
+  @keyframes pulse-color {
+    0%, 100% {
+      background-color: #22D3EE;
+    }
+    50% {
+      background-color: #0891B2;
+    }
+  }
+
+  @keyframes pulse-text {
+    0%, 100% {
+      color: #000000;
+    }
+    50% {
+      color: #0891B2;
+    }
+  }
+
+  @keyframes rgb-text {
+    0%, 100% { color: #FFFFFF; } /* Fallback/Start at White */
+    16% { color: #FF8A8A; }      /* Coral Red */
+    33% { color: #FFD384; }      /* Pastel Orange/Yellow */
+    50% { color: #A8FFB2; }      /* Light Green */
+    66% { color: #A5F3FC; }      /* Cyan */
+    83% { color: #C084FC; }      /* Purple */
+  }
 }
 .active hr{
     @apply block
