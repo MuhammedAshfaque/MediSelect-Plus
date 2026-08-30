@@ -19,10 +19,9 @@ const Header = () => {
         </a>
       </div>
 
-      {/* ---Right Side--- */}
-
+      {/* ---Right Side--- */} 
       <div className="md:w-1/2 relative">
-        <img className="lg:w-[560px] max-w-none shadow-[0_20px_40px_rgba(0,0,0,0.5)] sm:h-60 md:h-120 md:absolute bottom-0 rounded-2xl" alt=""  src={assets.header_img} style={{ top: '4px', left: '50px' }} />
+        <img className="md:lg:w-[560px] md:max-w-none shadow-[0_20px_40px_rgba(0,0,0,0.5)] sm:h-60 md:h-120 md:absolute bottom-0 rounded-2xl" alt=""  src={assets.header_img} style={{ top: '4px', left: '50px' }} />
       </div>
     </div>
   )
